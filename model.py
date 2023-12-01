@@ -19,7 +19,7 @@ class Classifier(nn.Module):
         x = F.relu(F.max_pool2d(self.conv2_drop(self.conv2(x)), 2))
         x = x.view(-1 , 5*10*10)
         x = F.relu (self.fc1(x))
-        x = F.dropout(x) #TRAINING = SELF.TRAINING
+        x = F.dropout(x) 
         x = self.fc2(x)
         
         return F.log_softmax(x, dim = 1)

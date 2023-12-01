@@ -15,9 +15,9 @@ def create_dataloaders(train, batch_size):
 
 
     loader = torch.utils.data.DataLoader(
-        datasets.SVHN(
+        datasets.MNIST(
             "../data", 
-            split=train,
+            train=train,
             download= True,
             transform = data_transforms
             ),

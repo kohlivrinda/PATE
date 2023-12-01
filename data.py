@@ -51,5 +51,4 @@ class NoisyDataset (Dataset):
         sample = self.noisy_data[index]
         if self.transform:
             sample = self.transform(sample)
-
         return sample

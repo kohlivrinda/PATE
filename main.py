@@ -1,7 +1,7 @@
 import torch
 from teacher import Teacher
 from model import Model
-from data import load_data,NoisyDataset
+from data import create_dataloaders, NoisyDataset
 from utils import accuracy, loop
 from student import Student
 
@@ -22,8 +22,8 @@ class Arguements():
 
 args = Arguements()
 
-train_loader = load_data(True, args.batchsize)
-test_loader = load_data(False, args.test_batchsize)
+train_loader = create_dataloaders(True, args.batchsize)
+test_loader = create_dataloaders(False, args.test_batchsize)
 
 teacher = Teacher(args, Model, n_teachers=args.n_teachers)
 teacher.train(train_loader)

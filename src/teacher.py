@@ -1,8 +1,6 @@
 import torch
-import torch.nn.functional as F
-import torch.optim as optim
 from torch.distributions.laplace import Laplace
-from utils import accuracy, loop
+from utils import loop
 
 
 class Teacher:
@@ -11,12 +9,11 @@ class Teacher:
         self.n_teachers = n_teachers
         self.model = model
         self.args = args
-        self.init_models()
         self.epsilon = epsilon
-        self.models = {}
+        self.models = self.init_models()
 
     def init_models(self):
-        self.models = {f"model_{index}": self.model() for index in range(self.n_teachers)}
+        return {f"model_{index}": self.model() for index in range(self.n_teachers)}
 
     def addnoise(self, x):
         m = Laplace(torch.tensor([0.0]), torch.tensor([self.epsilon]))

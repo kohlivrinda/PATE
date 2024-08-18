@@ -1,5 +1,6 @@
 import torch
 import torch.optim as optim
+import torch.functional as F
 
 def accuracy(preds, dataset):
     total , correct = 0.0, 0.0

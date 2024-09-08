@@ -1,6 +1,6 @@
 import torch
 from teacher import Teacher
-from model import Model
+from model import Classifier
 from data import create_dataloaders, NoisyDataset
 from utils import accuracy, loop
 from student import Student
